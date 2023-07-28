@@ -1,0 +1,36 @@
+[
+  {
+    "name": "Fernando",
+    "email": "fer@gmail.com",
+    "password": "123456",
+    "isAdmin": false
+  },
+  {
+    "id": "de5a3129-0cd8-43e8-83bf-2af6f9dd2742",
+    "name": "Maria",
+    "email": "maria@gmail.com",
+    "password": "$2b$10$SFFFB7QMEInP2wmk7SmCOOq1M2HI.ImAjBysGK1qd59OmfHvHiHkW",
+    "isAdmin": false
+  },
+  {
+    "id": "4cebcc4d-a921-4ae3-83db-181e98f5e540",
+    "name": "Juan",
+    "email": "juan@gmail.com",
+    "password": "$2b$10$PjQArLlgiomQXDmEkhT2CeuBP83UlJx57pH7PiSMEr0ySr4qKebPK",
+    "isAdmin": false
+  },
+  {
+    "id": "f1f363d1-0d98-4d39-befd-416bca713568",
+    "name": "kk",
+    "email": "kk@kk.com",
+    "password": "$2b$10$x6CAPJnvtWpw35SRzS79suTtj8TIwgg0IgqC7JEH1AjRM1MCOI1Ou",
+    "isAdmin": true
+  },
+  {
+    "id": "9d8ae287-a3f0-400b-b4f4-f1abd1106818",
+    "name": "COCO",
+    "email": "cs@vc.com",
+    "password": "$2b$10$GctH50BoLi2CpQhR1dQSYudkkTVa8hh31k8yCk6/zPDM/RCHxPnKW",
+    "isAdmin": false
+  }
+]
