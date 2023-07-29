@@ -4,7 +4,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4002;
 const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes');
 const rememberMe = require('./middlewares/rememberMe');
