@@ -1,0 +1,112 @@
+<script>
+        function filterByCategory(category) {
+            // Simula la lógica de filtrado por categoría
+            alert("Filtrado por: " + category);
+        }
+
+        function search() {
+            const searchInput = document.querySelector(".filter-input");
+            const searchTerm = searchInput.value;
+            // Simula la lógica de búsqueda
+            alert("Búsqueda: " + searchTerm);
+        }
+    </script>
+
+<div class="filter-container">
+  <div class="filter-box">
+      <div class="filter-title">Administracion de Clubes</div>
+      <div class="filter-row">
+        <div class="filter-dropdown">
+          <select onchange="filterByCategory(this.value)">
+              <option value="">Estado</option>
+              <option value="Estado Aprobado">Aprobado</option>
+              <option value="Estado Revisando">Revisando</option>
+              <option value="Estado Rechazado">Rechazado</option>
+          </select>
+      </div>
+      <div class="filter-dropdown">
+        <select onchange="filterByCategory(this.value)">
+            <option value="">Subsidio</option>
+            <option value="Subsidio Clubes en Obra">Clubes en Obra</option>
+            <option value="Subsidio Hay Equipo">Hay Equipo</option>
+            <option value="Subsidio Apoyo en la Emergencia">Apoyo en la Emergencia</option>
+        </select>
+    </div>
+    <div class="filter-dropdown">
+      <select onchange="filterByCategory(this.value)">
+          <option value="">Documentacion</option>
+          <option value="Documentacion Aprobado">Aprobado</option>
+          <option value="Documentacion Revisando">Revisando</option>
+          <option value="Documentacion Rechazado">Rechazado</option>
+      </select>
+  </div>
+  <div class="filter-dropdown">
+    <select onchange="filterByCategory(this.value)">
+        <option value="">Expediente</option>
+        <option value="Expediente 1">1</option>
+        <option value="Expediente 2">2</option>
+        <option value="Expediente 3">3</option>
+    </select>
+</div>
+
+
+        <div class="filter-row">
+            <button class="filter-button" onclick="filterByCategory('Provincia')">Provincia</button>
+            <button class="filter-button" onclick="filterByCategory('Municipio')">Municipio</button>
+            <button class="filter-button" onclick="filterByCategory('Referente')">Referente</button>
+            <button class="filter-button" onclick="filterByCategory('Prioridad')">Prioridad</button>
+        </div>
+      
+      
+      
+        <div class="filter-row">
+          <input type="text" class="filter-input" placeholder="Búsqueda...">
+          <button class="filter-search-button" onclick="search()">Buscar</button>
+          <button class="filter-download-button">Descargar</button>
+      </div>
+  </div>
+</div>
+
+
+
+
+<!-- <div class="filter-box">
+  <div class="filter-title">Opciones de Filtrado</div>
+  <div class="filter-row">
+      <div class="filter-button">
+          Filtro 1
+          <div class="filter-dropdown">
+              <button>Subfiltro 1</button>
+              <button>Subfiltro 2</button>
+              <button>Subfiltro 3</button>
+          </div>
+      </div>
+      <div class="filter-button">
+          Filtro 2
+          <div class="filter-dropdown">
+              <button>Subfiltro A</button>
+              <button>Subfiltro B</button>
+              <button>Subfiltro C</button>
+          </div>
+      </div>
+  </div>
+  <div class="filter-row">
+    <div class="filter-button">
+      Filtro 1
+      <div class="filter-dropdown">
+          <button>Subfiltro 1</button>
+          <button>Subfiltro 2</button>
+          <button>Subfiltro 3</button>
+      </div>
+  </div>
+  <div class="filter-button">
+      Filtro 2
+      <div class="filter-dropdown">
+          <button>Subfiltro A</button>
+          <button>Subfiltro B</button>
+          <button>Subfiltro C</button>
+      </div>
+  </div>
+</div>
+  </div>
+</div> -->

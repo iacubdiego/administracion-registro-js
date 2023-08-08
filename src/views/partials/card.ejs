@@ -1,0 +1,209 @@
+<div class="card">
+  <div class="card-header header-elements-inline">
+    <h6 class="card-title">
+      Listado de Clubes Registro
+      <a href="manage_clubesregistros.php?sincol=0"
+        >(Mostrar Beneficios Otorgados)</a>
+    </h6>
+  </div>
+
+  <div class="card-body py-0 mb-3">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <div class="col-lg-3">
+          <select
+            name="bus_todocompletado"
+            class="form-control cmbfiltro"
+            id="bus_todocompletado"
+          >
+            <option value="0" selected="">Todas</option>
+            <option value="1">Solicitud Enviada Completa</option>
+            <option value="2">Inscripcion en proceso</option>
+            <option value="3">Todo Aprobado</option>
+            <option value="4">Todo el Universo</option>
+            <option value="5">Estatuto Aprobado</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3">
+          <select
+            name="bus_provincia"
+            id="bus_provincia"
+            class="form-control cmbfiltro"
+          >
+            <option selected="" value="">--PROVINCIA--</option>
+            <option value="1">Buenos Aires</option>
+            <option value="2">Catamarca</option>
+            <option value="5">Chaco</option>
+            <option value="6">Chubut</option>
+            <option value="4">Ciudad Autónoma de Buenos Aires</option>
+            <option value="3">Cordoba</option>
+            <option value="7">Corrientes</option>
+            <option value="8">Entre Rios</option>
+            <option value="9">Formosa</option>
+            <option value="100">Gran Buenos Aires</option>
+            <option value="10">Jujuy</option>
+            <option value="11">La Pampa</option>
+            <option value="12">La Rioja</option>
+            <option value="13">Mendoza</option>
+            <option value="14">Misiones</option>
+            <option value="15">Neuquen</option>
+            <option value="16">Rio Negro</option>
+            <option value="17">Salta</option>
+            <option value="21">San Juan</option>
+            <option value="22">San Luis</option>
+            <option value="18">Santa Cruz</option>
+            <option value="20">Santa Fe</option>
+            <option value="19">Santiago del Estero</option>
+            <option value="23">Tierra del Fuego</option>
+            <option value="24">Tucuman</option>
+          </select>
+        </div>
+        <div class="col-lg-3">
+          <div class="multiselect-native-select">
+            <select
+              class="form-control multiselect-select-all-filtering-partidos cmbfiltro"
+              id="bus_partidosmultiple"
+              name="bus_partidosmultiple[]"
+              multiple="multiple"
+              data-fouc=""
+            ></select>
+            <div class="btn-group" style="width: 100%">
+              <button
+                type="button"
+                class="multiselect dropdown-toggle btn btn-light"
+                data-toggle="dropdown"
+                title="--PARTIDO / MUNICIPIO--"
+                style="width: 100%; overflow: hidden; text-overflow: ellipsis"
+              >
+                <span class="multiselect-selected-text"
+                  >--PARTIDO / MUNICIPIO--</span
+                >
+              </button>
+              <div class="multiselect-container dropdown-menu"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-3">
+          <input
+            type="text"
+            name="bus_general"
+            id="bus_general"
+            value=""
+            class="form-control txtfiltro"
+            placeholder="Busqueda por Club / Cuit"
+            autocomplete="off"
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-lg-3">
+          <select
+            name="bus_otorgarsubsidio"
+            class="form-control cmbfiltro"
+            id="bus_otorgarsubsidio"
+          >
+            <option value="0" selected="">Todos los Subsidios</option>
+            <option value="1">Aprobado</option>
+            <option value="2">Rechazado</option>
+            <option value="3">Pendiente</option>
+          </select>
+        </div>
+
+        <div class="col-lg-2">
+          <select
+            name="bus_numeroregistro"
+            class="form-control cmbfiltro"
+            id="bus_numeroregistro"
+          >
+            <option value="0" selected="">Todos</option>
+            <option value="1">Clubes con número de registro</option>
+            <option value="2">Clubes sin número de registro</option>
+            <option value="3">
+              Clubes sin número de registro que cargaron info
+            </option>
+          </select>
+        </div>
+
+        <div class="col-lg-3" style="display: none">
+        </div>
+
+        <div class="col-lg-1">
+          <select
+            name="bus_beneficiario"
+            class="form-control cmbfiltro"
+            id="bus_beneficiario"
+          >
+            <option value="0" selected="">--Beneficiario--</option>
+            <option value="1">CeO-20</option>
+            <option value="2">CeO-21</option>
+            <option value="3">CeO-22</option>
+            <option value="4">AE</option>
+          </select>
+        </div>
+
+        <div class="col-lg-3">
+          <div class="btn-group">
+            <input
+              type="hidden"
+              name="exportar"
+              id="exportar"
+              value="0"
+              autocomplete="off"
+            />
+            <button
+              type="button"
+              class="btn bg-teal-400 btn-labeled btn-labeled-left"
+            >
+              <b><i class="icon-file-excel"></i></b> Exportar
+            </button>
+            <button
+              type="button"
+              class="btn bg-teal-400 dropdown-toggle"
+              data-toggle="dropdown"
+            ></button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a
+                href="#"
+                onclick="DescargarExcel(1); return false;"
+                class="dropdown-item"
+                ><i class="icon-menu7"></i> Control</a
+              >
+              <a
+                href="#"
+                onclick="DescargarExcel(2); return false;"
+                class="dropdown-item"
+                ><i class="icon-menu7"></i> Anexo 1</a
+              >
+              <a
+                href="#"
+                onclick="DescargarExcel(3); return false;"
+                class="dropdown-item"
+                ><i class="icon-menu7"></i> Anexo 2</a
+              >
+              <a
+                href="#"
+                onclick="DescargarExcel(4); return false;"
+                class="dropdown-item"
+                ><i class="icon-menu7"></i> Informe Tecnico</a
+              >
+              <a
+                href="#"
+                onclick="DescargarExcel(5); return false;"
+                class="dropdown-item"
+                ><i class="icon-menu7"></i> Mejoras</a
+              >
+              <a
+                href="#"
+                onclick="DescargarExcel(6); return false;"
+                class="dropdown-item"
+                ><i class="icon-menu7"></i> Informes</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
