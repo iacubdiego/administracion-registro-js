@@ -1,13 +1,5 @@
 [
   {
-    "id": "2",
-    "titulo": "Risotto de berenjena al escabeche",
-    "slug": "risotto-de-berenjena-al-escabeche",
-    "currency": "U$S",
-    "price": "50",
-    "description": "Risotto de berenjena y queso de cabra"
-  },
-  {
     "titulo": "Mousse de arroz",
     "currency": "$",
     "price": "150",

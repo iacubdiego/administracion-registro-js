@@ -1,65 +1,121 @@
 <!DOCTYPE html>
 <html>
-  <%- include('./partials/head') %>
-  <body>    
+  
+    <%- include('./partials/head') %>
+  
     <%- include("./partials/header") %>    
-    <!-- Page content -->
+  
+    <body class="body">    
+      
+    <div class="container">
+    <!-- <%- include("./partials/sidebar") %>     -->
+      
+    <button class="toggle-button">!!!</button>
+    <div class="sidebar active">
+        <div class="sidebar-content">
+            <div class="section">
+                <h2>Title 1</h2>
+                <ul>
+                    <button class="sidebar-button" data-target="item1">Item 1</button>
+                    <button class="sidebar-button" data-target="item2">Item 2</button>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Title 2</h2>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Title 3</h2>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    
-    <%- include("./partials/card") %>    
+
+    <!-- Page content -->
+    <!-- <div class="ps-content"> -->
+    <div class="main-content">
 
     <%- include("./partials/card2") %>    
 
-
-    <div class="ps-content">
-      <!-- <div>
-        <select name="estado" id="filtro_estado">
-          Estado
-        </select>
-        <input type="text" name="bus_general" id="bus_general" value="" class="form-control txtfiltro" placeholder="Busqueda por Club / Cuit" autocomplete="off">
-
-      </div> -->
-      <!-- About Section -->
-      <hr />
-      
-      <!-- Table Section -->
-      <%- include("./partials/table") %>    
-    </div>
-                <br />
-                <div class="ps-row ps-padding-64" id="menu">
-                  <div class="ps-col l6 ps-padding-large">
-                    <h1 class="ps-center">Nuentro Menu</h1>
-                <div>
-                  
-                  <% for(let index=0; index < menu.length; index++) { %>
-                    <a href="/detalle/<%= menu[index].id %>">
-                      <h4><%= menu[index].titulo %></h4>
-                      <p class="ps-text-grey">
-                  <%= menu[index].description %>
-                  <%= menu[index].currency %>
-                  <%= menu[index].price %>
-                </p>
-              </a>
-              <!-- eliminar producto -->
+    <hr />      
+    <!-- Table Section -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Columna 1</th>
+            <th>Columna 2</th>
+            <th>Columna 3</th>
+            <th>Columna 4</th>
+            <th>Columna 5</th>
+            <th>Columna 6</th>
+          </tr>
+        </thead>
+            <tbody>
+              <% for(let index=0; index < 5; index++) { %>
+            <tr>
+            
+            <td> <a href="/detalle/<%= menu[index].id %>"></a><%= menu[index].titulo %></td>
+            <td><%= menu[index].description %></td>
+            <td><%= menu[index].currency %></td>
+            <td><%= menu[index].price %></td>
+            <td><!-- eliminar producto -->
               <form action="/products/<%= menu[index].id %>?_method=DELETE" method="post">
               <button type="submit" class="ps-btn ps-btn-danger">Eliminar</button>
-            </form>
-            <br />
-            <% } %>
-        
-        </div>
-      </div>
+            </form></td>
+            <td>Dato 1-6</td>
+          </tr>
+          <% } %>
+                <tr>
+                  <td>Dato 2-1</td>
+                      <td>Dato 2-2</td>
+                      <td>Dato 2-3</td>
+                      <td>Dato 2-4</td>
+                      <td>Dato 2-5</td>
+                      <td>Dato 2-6</td>
+                    </tr>
+                    <!-- Agrega más filas si es necesario -->
+                  </tbody>
+                </table>
+              </div>
+    
     </div>
-
-        <!-- <div class="ps-col l6 ps-padding-large ps-img-menu">
-          <img
-            src="/images/menu.jpg"
-            class="ps-round ps-image ps-opacity-min"
-            alt="Menu"
-          />
-        </div> -->
-           
-      <!-- Footer -->
-      <%- include("./partials/footer") %>
+    <br />
+  </div>  
   </body>
+   
+<!-- Footer -->
+    
+    <%- include("./partials/footer") %>
+  
 </html>
+
+
+<script>
+  const toggleButton = document.querySelector('.toggle-button');
+  const sidebar = document.querySelector('.sidebar');
+  const sidebarButtons = document.querySelectorAll('.sidebar-button');
+  const tableContainer = document.querySelector('.table-container');
+  
+  toggleButton.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+  });
+  
+  sidebarButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          const target = button.getAttribute('data-target');
+          if (target === 'item1') {
+              tableContainer.innerHTML = '<p>Contenido del Item 1</p>';
+          } else if (target === 'item2') {
+              tableContainer.innerHTML = '<p>Contenido del Item 2</p>';
+          }
+      });
+  });
+      </script>

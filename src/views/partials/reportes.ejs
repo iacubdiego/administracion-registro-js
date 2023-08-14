@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <!-- Agrega la referencia a la librería Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Reportes</h1>
+
+    <!-- Sección para el gráfico -->
+    <h2>Gráfico de Socios por Provincia</h2>
+    <canvas id="sociosChart"></canvas>
+
+    <!-- Sección para los resultados de entidades (clubes) -->
+    <h2>Resultados de Clubes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>CUIT</th>
+                <th>PROVINCIA</th>
+                <th>MUNICIPIO</th>
+                <th>SOCIOS</th>
+                <th>SUBSIDIOS RECIBIDOS</th>
+                <th>DOCUMENTACION PRESENTADA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre los resultados de los clubes -->
+            <% for (const club of clubes) { %>
+                <tr>
+                    <td><%- club.id %></td>
+                    <td><%- club.cuit %></td>
+                    <td><%- club.provincia %></td>
+                    <td><%- club.municipio %></td>
+                    <td><%- club.socios %></td>
+                    <td><%- club.subsidios %></td>
+                    <td><%- club.documentacion %></td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- Código JavaScript para crear el gráfico -->
+    <script>
+        // Datos de ejemplo para el gráfico
+        // var provincias = <%= JSON.stringify(provincias) %>;
+        
+        const provincias = [
+    "Buenos Aires",
+    "Catamarca",
+    "Chaco",
+    "Chubut",
+    "Córdoba",
+    "Corrientes",
+    "Entre Ríos",
+    "Formosa",
+    "Jujuy",
+    "La Pampa",
+    "La Rioja",
+    "Mendoza",
+    "Misiones",
+    "Neuquén",
+    "Río Negro",
+    "Salta",
+    "San Juan",
+    "San Luis",
+    "Santa Cruz",
+    "Santa Fe",
+    "Santiago del Estero",
+    "Tierra del Fuego",
+    "Tucumán"
+];
+
+const sociosPorProvincia = {};
+provinciasArgentinas.forEach(provincia => {
+    sociosPorProvincia[provincia] = Math.floor(Math.random() * 900) + 100; // Genera números entre 100 y 999
+});
+
+        // var sociosPorProvincia = <%= JSON.stringify(sociosPorProvincia) %>;
+
+        var ctx = document.getElementById('sociosChart').getContext('2d');
+        var sociosChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: provincias,
+                datasets: [{
+                    label: 'Socios por Provincia',
+                    data: sociosPorProvincia,
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

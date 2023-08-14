@@ -4,6 +4,10 @@ const path = require('path');
 const productListPath = path.resolve(__dirname, '../data/products.json');
 const productList = JSON.parse(fs.readFileSync(productListPath, 'utf8'));
 
+const clubListPath = path.resolve(__dirname, '../data/clubes.json');
+const clubList = JSON.parse(fs.readFileSync(clubListPath, 'utf8'));
+
+
 // // const db = require('../database/models');
 // const sequelize = db.sequelize;
 // const { Op } = require("sequelize"); //No se usa
@@ -19,13 +23,14 @@ const mainController = {
             // Renderiza la vista de administrador con el menú de productos
             res.render('auth/admin', {
               user,
-              menu: productList
+              menu: productList,
             });
           } else {
             // Renderiza la vista de usuario regular con el menú de productos
             res.render('index', {
               user,
-              menu: productList
+              menu: productList,
+              clubes: clubList
             });
           }
         } else {

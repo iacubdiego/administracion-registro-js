@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "nombre": "Club A",
+        "cuit": "20-12345678-9",
+        "provincia": "Buenos Aires",
+        "municipio": "La Plata",
+        "socios": 300,
+        "subsidios": 5,
+        "documentacion": true
+    },
+    {
+        "id": 2,
+        "nombre": "Club B",
+        "cuit": "30-98765432-1",
+        "provincia": "Córdoba",
+        "municipio": "Córdoba",
+        "socios": 450,
+        "subsidios": 8,
+        "documentacion": true
+    },
+    {
+        "id": 3,
+        "nombre": "Club C",
+        "cuit": "23-56789123-4",
+        "provincia": "Santa Fe",
+        "municipio": "Rosario",
+        "socios": 250,
+        "subsidios": 3,
+        "documentacion": false
+    },
+    {
+        "id": 4,
+        "nombre": "Club D",
+        "cuit": "27-67891234-5",
+        "provincia": "Buenos Aires",
+        "municipio": "Quilmes",
+        "socios": 600,
+        "subsidios": 10,
+        "documentacion": true
+    },
+    {
+        "id": 5,
+        "nombre": "Club E",
+        "cuit": "33-34567890-6",
+        "provincia": "Mendoza",
+        "municipio": "Mendoza",
+        "socios": 350,
+        "subsidios": 6,
+        "documentacion": true
+    },
+    {
+        "id": 6,
+        "nombre": "Club F",
+        "cuit": "25-89012345-7",
+        "provincia": "Tucumán",
+        "municipio": "San Miguel de Tucumán",
+        "socios": 180,
+        "subsidios": 2,
+        "documentacion": false
+    },
+    {
+        "id": 7,
+        "nombre": "Club G",
+        "cuit": "22-45678901-2",
+        "provincia": "Salta",
+        "municipio": "Salta",
+        "socios": 400,
+        "subsidios": 7,
+        "documentacion": true
+    },
+    {
+        "id": 8,
+        "nombre": "Club H",
+        "cuit": "24-67890123-3",
+        "provincia": "Entre Ríos",
+        "municipio": "Paraná",
+        "socios": 320,
+        "subsidios": 4,
+        "documentacion": true
+    },
+    {
+        "id": 9,
+        "nombre": "Club I",
+        "cuit": "28-90123456-7",
+        "provincia": "San Juan",
+        "municipio": "San Juan",
+        "socios": 270,
+        "subsidios": 3,
+        "documentacion": false
+    },
+    {
+        "id": 10,
+        "nombre": "Club J",
+        "cuit": "29-23456789-0",
+        "provincia": "Neuquén",
+        "municipio": "Neuquén",
+        "socios": 230,
+        "subsidios": 4,
+        "documentacion": true
+    }
+]

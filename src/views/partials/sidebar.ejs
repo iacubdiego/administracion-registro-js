@@ -1,0 +1,47 @@
+    <button class="toggle-button">!!!</button>
+    <div class="sidebar active">
+        <div class="sidebar-content">
+            <div class="section">
+                <h2>Title 1</h2>
+                <ul>
+                    <button class="sidebar-button" data-target="item1">Item 1</button>
+                    <button class="sidebar-button" data-target="item2">Item 2</button>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Title 2</h2>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2>Title 3</h2>
+                <ul>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+const toggleButton = document.querySelector('.toggle-button');
+const sidebar = document.querySelector('.sidebar');
+const sidebarButtons = document.querySelectorAll('.sidebar-button');
+const tableContainer = document.querySelector('.table-container');
+
+toggleButton.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+});
+
+sidebarButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute('data-target');
+        if (target === 'item1') {
+            tableContainer.innerHTML = '<p>Contenido del Item 1</p>';
+        } else if (target === 'item2') {
+            tableContainer.innerHTML = '<p>Contenido del Item 2</p>';
+        }
+    });
+});
+    </script>
