@@ -11,13 +11,14 @@ const PORT = process.env.PORT || 4002;
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+
 const mainRoutes = require('./routes/mainRoutes');
 const productsRoutes = require('./routes/productsRoutes');
 const programasRoutes = require('./routes/programasRoutes');
 //Aquí llamo a la ruta de las api de movies
 const apiProgramasRouter = require('./routes/api/programas')
 //Aquí llamo a la ruta de las api de actors
-const apiClubesRouter = require('./routes/api/clubes')
+const apiClubesRouter = require('./routes/api/apiClubesRoutes')
 
 
 
@@ -42,7 +43,7 @@ app.use('/products', productsRoutes);
 
 //Aquí creo la colección de mis recursos de movies (APIs)
 // app.use('/api/programas',apiProgramasRouter);
-app.use('/api/clubes',apiClubesRouter);
+app.use('/api', apiClubesRouter);
 
 
 

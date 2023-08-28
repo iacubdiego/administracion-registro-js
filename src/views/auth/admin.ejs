@@ -1,17 +1,287 @@
 <!DOCTYPE html>
-<html>
-  <%- include('../partials/head') %>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reportes</title>
+    <link rel="stylesheet" type="text/css" href="/css/reportes" />
+
+    <!-- Agrega la referencia a la librería Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
   <body>
-    <!-- Header -->
-    <%- include("../partials/header") %>
+    <h1>Reportes</h1>
 
-    <!-- Footer -->
-    <%- include("../partials/footer") %>
+    <!-- Sección de filtrado -->
+    <h2>Filtrar Clubes</h2>
+    <form id="filtroForm">
+      <label for="provinciaFiltro">Provincia:</label>
+      <select id="provinciaFiltro" name="provincia">
+        <option value="">Todas</option>
+        <!-- Agrega opciones de provincias aquí -->
+      </select>
+      <button type="submit">Filtrar</button>
+    </form>
 
-    <!-- Page Content -->
+    <!-- Espacio para mostrar resultados de filtro y reportes -->
+    <div id="resultadosFiltro"></div>
+    <div id="reportes">
+      <!-- Gráfico y tabla de reportes aquí -->
+    </div>
 
+    <!-- Sección para el gráfico -->
+    <h2>Gráfico de Socios por Provincia</h2>
+    <canvas id="sociosChart"></canvas>
 
+    <!-- Sección para los resultados de entidades (clubes) -->
+    <h2>Resultados de Clubes</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>CUIT</th>
+          <th>PROVINCIA</th>
+          <th>MUNICIPIO</th>
+          <th>SOCIOS</th>
+          <th>SUBSIDIOS RECIBIDOS</th>
+          <th>DOCUMENTACION PRESENTADA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Itera sobre los resultados de los clubes -->
+        <% for (const club of clubes) { %>
+        <tr>
+          <td><%- club.id %></td>
+          <td><%- club.cuit %></td>
+          <td><%- club.provincia %></td>
+          <td><%- club.municipio %></td>
+          <td><%- club.socios %></td>
+          <td><%- club.subsidios %></td>
+          <td><%- club.documentacion %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
 
+    <!-- Código JavaScript para crear el gráfico -->
+    <script>
+      // Datos de ejemplo para el gráfico
 
+      const provincias = [
+        "Buenos Aires",
+        "Catamarca",
+        "Chaco",
+        "Chubut",
+        "Córdoba",
+        "Corrientes",
+        "Entre Ríos",
+        "Formosa",
+        "Jujuy",
+        "La Pampa",
+        "La Rioja",
+        "Mendoza",
+        "Misiones",
+        "Neuquén",
+        "Río Negro",
+        "Salta",
+        "San Juan",
+        "San Luis",
+        "Santa Cruz",
+        "Santa Fe",
+        "Santiago del Estero",
+        "Tierra del Fuego",
+        "Tucumán",
+      ];
+
+      const sociosPorProvincia = {};
+      provinciasArgentinas.forEach((provincia) => {
+        sociosPorProvincia[provincia] = Math.floor(Math.random() * 900) + 100; // Genera números entre 100 y 999
+      });
+
+      var ctx = document.getElementById("sociosChart").getContext("2d");
+      var sociosChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: provincias,
+          datasets: [
+            {
+              label: "Socios por Provincia",
+              data: sociosPorProvincia,
+              backgroundColor: "rgba(75, 192, 192, 0.6)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+    <script>
+      const filtroForm = document.getElementById("filtroForm");
+      const resultadosFiltro = document.getElementById("resultadosFiltro");
+      const reportesContainer = document.getElementById("reportes");
+
+      filtroForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(filtroForm);
+
+        try {
+          const response = await fetch("/filtrar-clubes", {
+            method: "POST",
+            body: formData,
+          });
+
+          const data = await response.json();
+
+          // Mostrar resultados de filtro
+          resultadosFiltro.innerHTML = `
+                  <p>Cantidad de Clubes: ${data.cantidadClubes}</p>
+                  <p>Cantidad de Socios: ${data.cantidadSocios}</p>
+                  <p>Cantidad de Subsidios: ${data.cantidadSubsidios}</p>
+                  <p>Cantidad de Clubes con Documentación Presentada: ${data.cantidadConDocumentacion}</p>
+              `;
+
+          // Mostrar gráfico y tabla de reportes
+          reportesContainer.innerHTML = `
+                  <!-- Agregar aquí el gráfico y la tabla de reportes -->
+              `;
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
+    </script>
+
+    <div class="container-fluid">
+      <div class="d-sm-flex aligns-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">App Dashboard</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div
+                    class="text-xs font-weight-bold text-primary text-uppercase mb-1"
+                  >
+                    Productos
+                  </div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-film fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div
+                    class="text-xs font-weight-bold text-success text-uppercase mb-1"
+                  >
+                    Usuarios
+                  </div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-award fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+              <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                  <div
+                    class="text-xs font-weight-bold text-warning text-uppercase mb-1"
+                  >
+                    Categorías
+                  </div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                </div>
+                <div class="col-auto">
+                  <i class="fas fa-user fa-2x text-gray-300"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h5 class="m-0 font-weight-bold text-gray-800">
+                Ultimo Producto Listado -
+              </h5>
+            </div>
+            <div class="card-body">
+              <div class="text-center">
+                <img
+                  class="img-fluid px-3 px-sm-4 mt-3 mb-4"
+                  src="/img/fotosMulter/undefined"
+                  alt=" Ultimo producto "
+                  style="width: 30rem"
+                />
+              </div>
+              <p></p>
+              <p></p>
+              <a
+                class="btn btn-danger"
+                target="_blank"
+                rel="nofollow"
+                href="http://localhost:3000/products/detail/58"
+                >View product detail</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-4">
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-gray-800">Categorias</h6>
+            </div>
+            <div class="card-body colorFondo"><div class="row"></div></div>
+          </div>
+        </div>
+      </div>
+      <h1 class="h3 mb-2 text-gray-800">Lista de productos</h1>
+      <div class="card shadow mb-4">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table
+              class="table table-bordered"
+              id="dataTable"
+              width="100%"
+              cellspacing="0"
+            >
+              <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Precio</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

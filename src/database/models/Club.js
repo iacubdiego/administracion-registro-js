@@ -2,18 +2,30 @@ module.exports = (sequelize, dataTypes) => {
     let alias = 'Club';
     let cols = {
         id: {
-            type: dataTypes.INTEGER,
+            type: dataTypes.STRING(100),
             autoIncrement: true,
             primaryKey: true
         },
-        titulo: {
-            type: dataTypes.TEXT,
+        nombre: {
+            type: dataTypes.STRING(100),
         },
-        descripcion: {
-            type: dataTypes.TEXT,
+        cuit: {
+            type: dataTypes.STRING(100),
         },
-        categoria: {
-            type: dataTypes.TEXT,
+        provincia: {
+            type: dataTypes.STRING(100),
+        },
+        municipio: {
+            type: dataTypes.STRING(100),
+        },
+        socios: {
+            type: dataTypes.STRING(100),
+        },
+        subsidios: {
+            type: dataTypes.STRING(100),
+        },
+        documentacion: {
+            type: dataTypes.STRING(100),
         }
     };
     let config = {

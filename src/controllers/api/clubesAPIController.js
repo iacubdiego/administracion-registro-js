@@ -4,36 +4,48 @@
 // const { Op } = require("sequelize");
 // const moment = require('moment');
 
+const db = require('../../database/models');
+const sequelize = db.sequelize;
+
 const path = require('path');
 const fs = require('fs');
 const { Op } = require("sequelize");
 const moment = require('moment');
 
-const productListPath = path.resolve(__dirname, '../../data/products.json');
-const db = JSON.parse(fs.readFileSync(productListPath, 'utf8'));
-
+// const clubListPath = path.resolve(__dirname, '../../data/clubes.json');
+// const db = JSON.parse(fs.readFileSync(clubListPath, 'utf8'));
 
 //Aqui tienen otra forma de llamar a cada uno de los modelos
-const Programas = db.Programas;
-const Clubes = db.Clubes;
+// const Programas = db.Programas;
+// const Clubes = db.Clubes;
 //---------------------------
 //Dentro del actorsAPIController uso las dos forma de poder llamar a nuestros modelo
 //----------------------------------
 const clubesAPIController = {
     'list': (req, res) => {
-        db.Club.findAll()
-        .then(clubes => {
-            let respuesta = {
-                meta: {
-                    status : 200,
-                    total: clubes.length,
-                    url: 'api/clubes'
-                },
-                data: clubes
-            }
-                res.json(respuesta);
+        db.Club.findAll() // Promise
+            .then(clubes => {
+                return res.render("api/clubes", {
+                    clubes: clubes
+                });
             })
+        ;
+
     },
+    // 'list': (req, res) => {
+    //     db.Club.findAll()
+    //     .then(clubes => {
+    //         let respuesta = {
+    //             meta: {
+    //                 status : 200,
+    //                 total: clubes.length,
+    //                 url: 'api/clubes'
+    //             },
+    //             data: clubes
+    //         }
+    //             res.json(respuesta);
+    //         })
+    // },
     
     'detail': (req, res) => {
         db.Club.findByPk(req.params.id)

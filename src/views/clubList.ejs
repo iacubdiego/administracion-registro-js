@@ -1,0 +1,35 @@
+<h1> <%= clubes.cuit %> </h1>
+
+<table>
+    <thead>
+      <tr>
+        <th>Columna 1</th>
+        <th>Columna 2</th>
+        <th>Columna 3</th>
+        <th>Columna 4</th>
+        <th>Columna 5</th>
+        <th>Columna 6</th>
+        <th>Columna 7</th>
+      </tr>
+    </thead>
+        <tbody>
+          <% for(let index=0; index < 5; index++) { %>
+        <tr>
+        
+        <td><%= clubes[index].nombre %></td>
+        <td><%= clubes[index].cuit %></td>
+        <td><%= clubes[index].provincia %></td>
+        <td><%= clubes[index].municipio %></td>
+        <td><%= clubes[index].municipio %></td>
+        <td><%= clubes[index].subsidios %></td>
+        <td><%= clubes[index].socios %></td>
+        <!-- <td> eliminar producto 
+          <form action="/products/<%= clubes[index].id %>?_method=DELETE" method="post">
+          <button type="submit" class="ps-btn ps-btn-danger">Eliminar</button>
+        </form></td> -->
+        <td>Dato 1-6</td>
+      </tr>
+      <% } %>
+                <!-- Agrega más filas si es necesario -->
+              </tbody>
+            </table>

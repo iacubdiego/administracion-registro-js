@@ -4,7 +4,7 @@ const clubesAPIController = require('../../controllers/api/clubesAPIController')
 
 //Rutas
 //Listado de todos los clubes
-router.get('/', clubesAPIController.list);
+router.get('/clubes', clubesAPIController.list);
 //Detalle del club
 router.get('/:id', clubesAPIController.detail);
 //En que programas trabajo el club con id tal

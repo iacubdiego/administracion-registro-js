@@ -8,14 +8,26 @@ const clubListPath = path.resolve(__dirname, '../data/clubes.json');
 const clubList = JSON.parse(fs.readFileSync(clubListPath, 'utf8'));
 
 
-// // const db = require('../database/models');
-// const sequelize = db.sequelize;
-// const { Op } = require("sequelize"); //No se usa
-// const Programa = db.Programa; //No se usa
+const db = require('../database/models');
+const sequelize = db.sequelize;
+const { Op } = require("sequelize"); //No se usa
+const Club = db.Club; //No se usa
 
 const userModel = require('../models/UsersModel');
 
+// console.log(clubList)
+
 const mainController = {
+    'list': (req, res) => {
+        db.Club.findAll() // Promise
+            .then(clubes => {
+                return res.render("clubList", {
+                    clubes: clubes
+                });
+            })
+        ;
+
+    },
     index: (req, res) => {
         const user = req.session.user;
         if (user) {
@@ -24,6 +36,7 @@ const mainController = {
             res.render('auth/admin', {
               user,
               menu: productList,
+              clubes: clubList
             });
           } else {
             // Renderiza la vista de usuario regular con el menú de productos

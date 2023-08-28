@@ -7,7 +7,13 @@ const guestMiddleware = require('../middlewares/guestMiddleware');
 
 
 router.get('/', mainController.index);
+router.get('/clubList', mainController.list);
+
+
 router.get('/admin', mainController.index);
+
+// router.get('/reportes', mainController.index);
+
 
 router.get('/detalle/:id', mainController.detalle);
 router.get('/profile',  mainController.profile);

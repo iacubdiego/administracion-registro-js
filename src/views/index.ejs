@@ -16,8 +16,8 @@
             <div class="section">
                 <h2>Title 1</h2>
                 <ul>
-                    <button class="sidebar-button" data-target="item1">Item 1</button>
-                    <button class="sidebar-button" data-target="item2">Item 2</button>
+                    <button class="sidebar-button-item" data-target="item1">Item 1</button>
+                    <button class="sidebar-button-item" data-target="item2">Item 2</button>
                 </ul>
             </div>
             <div class="section">
@@ -56,31 +56,27 @@
             <th>Columna 4</th>
             <th>Columna 5</th>
             <th>Columna 6</th>
+            <th>Columna 7</th>
           </tr>
         </thead>
             <tbody>
               <% for(let index=0; index < 5; index++) { %>
             <tr>
             
-            <td> <a href="/detalle/<%= menu[index].id %>"></a><%= menu[index].titulo %></td>
-            <td><%= menu[index].description %></td>
-            <td><%= menu[index].currency %></td>
-            <td><%= menu[index].price %></td>
-            <td><!-- eliminar producto -->
-              <form action="/products/<%= menu[index].id %>?_method=DELETE" method="post">
+            <td> <a href="/detalle/<%= clubes[index].id %>"></a><%= clubes[index].nombre %></td>
+            <td><%= clubes[index].cuit %></td>
+            <td><%= clubes[index].provincia %></td>
+            <td><%= clubes[index].municipio %></td>
+            <td><%= clubes[index].municipio %></td>
+            <td><%= clubes[index].subsidios %></td>
+            <td><%= clubes[index].socios %></td>
+            <!-- <td> eliminar producto 
+              <form action="/products/<%= clubes[index].id %>?_method=DELETE" method="post">
               <button type="submit" class="ps-btn ps-btn-danger">Eliminar</button>
-            </form></td>
+            </form></td> -->
             <td>Dato 1-6</td>
           </tr>
           <% } %>
-                <tr>
-                  <td>Dato 2-1</td>
-                      <td>Dato 2-2</td>
-                      <td>Dato 2-3</td>
-                      <td>Dato 2-4</td>
-                      <td>Dato 2-5</td>
-                      <td>Dato 2-6</td>
-                    </tr>
                     <!-- Agrega más filas si es necesario -->
                   </tbody>
                 </table>
@@ -88,7 +84,9 @@
     
     </div>
     <br />
-  </div>  
+    
+  </div>
+    </div>  
   </body>
    
 <!-- Footer -->
